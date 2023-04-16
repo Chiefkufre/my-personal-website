@@ -13,6 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::controller(FrontendController::class)->prefix('front')->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/blog', 'blog')->name('front.blog');
+        Route::get('/portfolio', 'portfolio')->name('front.portfolio');
+    });
